@@ -1,0 +1,311 @@
+input[type="number"] {
+  max-width: 80%;
+}
+
+div.outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Customize fonts */
+body, label, input, button, select { 
+  font-family: 'Helvetica Neue', Helvetica;
+  font-weight: 200;
+}
+h1, h2, h3, h4 { font-weight: 400; }
+
+#controls {
+  /* Appearance */
+  background-color: white;
+  padding: 0 20px 20px 20px;
+  cursor: move;
+  /* Fade out while not hovering */
+  opacity: 0.65;
+  zoom: 0.9;
+  transition: opacity 500ms 1s;
+}
+
+button {
+  overflow: visible;
+}
+
+#controls:hover {
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0;
+}
+
+/* Position and style citation */
+#cite {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px;
+}
+
+/* If not using map tiles, show a white background */
+.leaflet-container {
+  background-color: white !important;
+}
+
+/* Allows pop-up modal to not be greyed out*/
+.modal-backdrop {
+  z-index: 0;
+}
+
+#login { 
+  margin: auto;
+}
+
+/*******************/
+/*AGREGADO POR GIAN*/
+/*******************/
+/*Volver mayusculas*/
+#L, #V {
+  text-transform: uppercase;
+}
+input[type="number"] {
+  max-width: 100%;
+}
+
+.ver-mas {
+  display: none;
+}
+/*Poner los colores de la leyenda en cirdulo*/
+.legend i {
+  border-radius: 50%;
+}
+.info.legend.leaflet-control {
+    margin-bottom: 50px;
+}
+.info {
+  background: #f2f2f2;
+}
+
+/*Estilos de la tabla de inspeccion*/
+.tabla {
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  margin: 0 auto 15px;
+  padding: 8px 0 0;
+  text-align: center;
+}
+.tabla .opciones h6 {
+  font-size: 0;
+  margin-top: 18px;
+}
+.tabla h5 {
+  margin-top: 0;
+}
+.tabla .form-group {
+  margin-bottom: 0;
+}
+.tabla .form-group .checkbox {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.tabla .opciones,
+.tabla .lugar_inspeccion,
+.tabla .chiris,
+.tabla .rastros {
+    display: inline-block;
+    padding: 0;
+    vertical-align: top;
+}
+
+.tabla .opciones {
+  width: 18%;
+}
+.tabla .chiris,
+.tabla .rastros,
+.tabla .lugar_inspeccion {
+  width: 26%;
+}
+
+/*animales*/
+.animales-opt .form-group {
+  display: inline-block;
+  vertical-align: top;
+  width: 16.8%;
+}
+.animales-opt .form-group:last-child {
+  width: 12%;
+}
+
+/*FILTRO*/
+.btn-filter {
+  padding-top: 24px;
+}
+
+.content-filter {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.container-fluid > .col-sm-8 {
+  width: 100%;
+}
+
+tbody tr:nth-child(2n+1) {
+  background: rgb(240, 247, 240);
+}
+
+.num-elements {
+  margin-bottom: 15px;
+}
+.group-1, .group-2, .group-3, .group-4 {
+  margin-top: 20px;
+}
+
+#reportUser {
+	margin-top: 5px;
+}
+
+/*Ocultar span de reconeccion*/
+#shiny-notification-reconnect .shiny-notification-content-text {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .provincia, .distrito, .localidad, .vivienda, .fecha, .caract_predio, 
+  .tot_intra, .tot_peri, .rastros, .personas_predio {
+    display: inline-block;
+    width: 49%;
+    vertical-align: top;
+  }
+
+  .rastros, .personas_predio{
+    vertical-align: top;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  /*Boton vermas*/
+  #controls .form-group.shiny-input-container, 
+  #controls br,
+  #load, 
+  #gps, 
+  #enterData,
+  #reportUser  {
+    display: none;
+  }
+
+  #controls {
+    top: 52px !important;
+    padding: 10px 15px 10px 20px;
+  }
+
+  #enterData,
+  #reportUser {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .viv-volver .table,
+  .viv-ingresadas .table {
+    	margin: 0 auto 20px;
+    }
+
+  #reportUser {
+  	margin: 5px 0;
+  }
+
+  #controls .form-group.shiny-input-container {
+    margin-bottom: 10px;
+    width: 100% !important;
+  }
+
+  #controls .form-group.shiny-input-container .control-label {
+    display: none;
+  }
+
+  #load, #gps {
+    width: 48% !important;
+  }
+
+  .ver-mas {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #fff;
+    background: #398439;
+  }
+  .mostrar-inline {
+    display: inline-block !important;
+  }
+  .mostrar {
+    display: block !important;
+  }
+
+  .tabla .opciones,
+  .tabla .rastros {
+    width: 18%;
+  }
+  .tabla .chiris {
+    width: 16%;
+  }
+  .tabla .lugar_inspeccion {
+    width: 43%;
+  }
+
+  /*animales*/
+  .animales-opt, .animales-cant {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .animales-opt .form-group {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .animales-opt .form-group:first-child {
+    margin-top: 0;
+  }
+
+  .animales-opt .form-group .checkbox{
+    margin: 0;
+  }
+
+  .animales-cant {
+    margin-top: 32px;
+  }
+
+  .animales-cant .col-sm-2 {
+    height: 36px;
+    margin: 5px 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  
+  .provincia, .distrito, .localidad, .vivienda, .fecha, .caract_predio, 
+  .tot_intra, .tot_peri, .rastros, .personas_predio {
+    width: 100%;
+  }
+
+  .info.legend.leaflet-control {
+    margin-bottom: 60px;
+  }
+
+  .animales-opt {
+    width: 60%;
+  }
+  .animales-cant {
+    margin-right: 0;
+    margin-left: 0;
+    width: 39%;
+  }
+  .animales-cant .col-sm-2:last-child {
+    margin-bottom:25px;
+  }
+}
