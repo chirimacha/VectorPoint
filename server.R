@@ -267,17 +267,6 @@ shinyServer(function(input, output, session) {
     if (!is.null(input$locality)) {
       houseinLoc <- getLocalityData()
       
-      ## CAUSED PROBLEMS BEFORE, SIMPLE WORKAROUND HERE
-      # display best polygon (incentives experiment)
-      copy <- sessionData$searchdata#loadSearchData(tableName=groupParameters$DATA_ID) 
-      dataInspecciones <- findInspecciones(copy)
-      sessionData$searchdata <- as.data.table(sessionData$searchdata)
-      listTriangulation <- getTriangulation(copy, dataInspecciones)
-      polyDF <- listTriangulation[[1]]
-      polyVertices <- listTriangulation[[2]]
-      
-      #iBestTri <- which(polyDF$nHouseUninspect == max(polyDF$nHouseUninspect))[1]
-      
     } else {
       session$sendCustomMessage(type = 'action-message',
                                 message = "buscando_false")
@@ -299,27 +288,7 @@ shinyServer(function(input, output, session) {
         lat = mean(houseinLoc[, LATITUDE]),
         
         zoom = 16
-      )
-    
-    for (z in 1:length(polyVertices)) {
-      
-      leafletMap %>% addPolygons(
-         polyVertices[[z]]$y,
-         polyVertices[[z]]$x,
-         fill=TRUE,
-         fillColor="transparent",
-         weight=1,
-         highlightOptions = highlightOptions(color = "white", weight = 1,
-                                             fill=TRUE, fillColor="white",
-                                             bringToFront = FALSE, fillOpacity = .4),
-          
-         
-         label = paste0(as.character(polyDF$nHouseUninspect[z])),
-          labelOptions = labelOptions(noHide = T, textsize = "15px")
-      )
-    }
-    
-    leafletMap %>%
+      )%>%
       addCircleMarkers(
         radius = 8
         ,color = sessionData$palForTime(houseinLoc[, time])

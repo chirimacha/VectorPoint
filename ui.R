@@ -30,8 +30,6 @@ library(shinythemes)
     source("controller/loadSaveMethods.R")
     #Colores
     source("controller/palettes.R")
-    #Triangulacion
-    source("controller/delaunayTriangulationFunctions.R")
   #Ui.R
     source("view/LoginForm.R")
     source("view/DataEntryForm.R")
