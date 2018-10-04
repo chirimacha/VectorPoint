@@ -32,7 +32,7 @@ shinyServer(function(input, output, session) {
       
       ###############
       #Leyendo el catchment area
-      sessionData$searchdata <- as.data.table(read.csv(paste("catchment_area/",loginSuccess[[3]],".csv", sep = ""), stringsAsFactors = FALSE, sep = " "))
+      sessionData$searchdata <- as.data.table(read.csv(paste("catchment_area/",loginSuccess[[3]],".csv", sep = ""), stringsAsFactors = FALSE))
       
       sessionData$searchdata <- sessionData$searchdata[, LATITUDE:=as.double(LATITUDE)] 
       sessionData$searchdata <- sessionData$searchdata[, LONGITUDE:=as.double(LONGITUDE)] 
@@ -245,9 +245,7 @@ shinyServer(function(input, output, session) {
   output$map <- renderLeaflet({
     
     leaflet(options = leafletOptions(maxZoom=18)) %>%
-      addTiles(urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.mqap-5ebohr46/{z}/{x}/{y}.png",
-               attribution = 'Maps by <a href="http://www.mapbox.com/">Mapbox</a>'
-      ) %>%
+      addTiles(urlTemplate = "//{s}.tiles.mapbox.com/v3/jcheng.mqap-5ebohr46/{z}/{x}/{y}.png") %>%
       #addProviderTiles(providers$Stamen.TonerLite, options = providerTileOptions(noWrap = TRUE) ) %>%
       setView(
         lng = mean(-71.55001667),
@@ -281,12 +279,11 @@ shinyServer(function(input, output, session) {
     
     leafletMap <- leafletProxy("map", data = houseinLoc) %>% 
       clearMarkerClusters() %>%
-      addTiles() %>% 
+      addTiles(attribution='© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>') %>% 
       clearShapes() %>% clearMarkers %>% clearControls() %>%
       setView(
         lng = mean(houseinLoc[, LONGITUDE]),
         lat = mean(houseinLoc[, LATITUDE]),
-        
         zoom = 16
       )%>%
       addCircleMarkers(

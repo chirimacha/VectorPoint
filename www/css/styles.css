@@ -171,6 +171,10 @@ tbody tr:nth-child(2n+1) {
   display: none;
 }
 
+.leaflet-control-attribution.leaflet-control>a:first-child {
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
   .provincia, .distrito, .localidad, .vivienda, .fecha, .caract_predio, 
   .tot_intra, .tot_peri, .rastros, .personas_predio {
